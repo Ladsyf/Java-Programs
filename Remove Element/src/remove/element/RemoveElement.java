@@ -12,23 +12,26 @@ public class RemoveElement {
     
     static int removeElement(int[] nums, int val){
     int k = 0;
+
+        for(int i = 0; i < nums.length; i++){
+
+            if(nums[i] == val){
+                    for(int j = i; j < nums.length ; j++){
+                        if(nums[j] != val){
+                            nums[i] += nums[j];
+                            nums[j] = nums[i] - nums[j];
+                            nums[i] = nums[i] - nums[j];
+                        }
+                    }
+
+            }
+        }
         for(int i = 0; i < nums.length; i++){
             if(nums[i] == val){
                 k++;
             }
         }
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] == val){
-                for(int j = i; j < nums.length ; j++){
-                    if(nums[j] != val){
-                        nums[i] += nums[j];
-                        nums[j] = nums[i] - nums[j];
-                        nums[i] = nums[i] - nums[j];
-                    }
-                }
-            }
-        }
-        //k = nums.length - k;
+        k = nums.length-k;
         return k;
     }
     
